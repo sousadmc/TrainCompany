@@ -28,7 +28,6 @@ import java.time.format.DateTimeParseException;
  * A train company has schedules (services) for its trains and passengers that
  * acquire itineraries based on those schedules.
  * @author  Diogo Sousa 
- * @author  Francisco Henriques
  * @version 1.0
  */
 public class TrainCompany implements java.io.Serializable {
@@ -102,7 +101,7 @@ public class TrainCompany implements java.io.Serializable {
     return _passengersMap.get(id);
   }
 
-  
+
   /**
   * Change name of a TrainCompany's Passenger
   * @param Id of the Passenger and new name
@@ -205,7 +204,7 @@ public class TrainCompany implements java.io.Serializable {
       	};
       	Collections.sort(sort, comparator);
   	}
-  	
+
   }
 
 
@@ -269,10 +268,10 @@ public class TrainCompany implements java.io.Serializable {
     Passenger p = null;
     LocalTime time;
     LocalDate date;
-    
+
     Service s;
-    
-    
+
+
 
     if(!_stationsMap.containsKey(departureStation))
   		throw new NoSuchStationNameException(departureStation);
@@ -290,7 +289,7 @@ public class TrainCompany implements java.io.Serializable {
     }catch (DateTimeParseException e){
       throw new BadTimeSpecificationException(departureTime);
     }
-    
+
 
     for(Station station : _stations)
       if(station.getName().equals(departureStation)){
@@ -299,7 +298,7 @@ public class TrainCompany implements java.io.Serializable {
 
 
     int i = 0;
-  	
+
     ArrayList<TrainStop> _tStop = new ArrayList<TrainStop> (st.getTrainStopsTime(time));
     ArrayList<TrainStop> _t2;
 
@@ -318,13 +317,13 @@ public class TrainCompany implements java.io.Serializable {
       }
     }
     compareItinerary(_list);
-    
+
 
 
     return Collections.unmodifiableCollection(_list);
   }
 
-  
+
 
   protected void compareItinerary(List<Itinerary> list){
   	Comparator<Itinerary> comparator = new Comparator<Itinerary>() {
@@ -407,7 +406,7 @@ public class TrainCompany implements java.io.Serializable {
       if (station.equals(stationname)){
         list.add(s);
       }
-    compareTime(list,1);  
+    compareTime(list,1);
     }
     if(!_stationsMap.containsKey(stationname))
       throw new NoSuchStationNameException(stationname);
@@ -426,7 +425,7 @@ public class TrainCompany implements java.io.Serializable {
       if (station.equals(stationname)){
         list.add(s);
       }
-    compareTime(list,2);  
+    compareTime(list,2);
     }
     if(!_stationsMap.containsKey(stationname))
       throw new NoSuchStationNameException(stationname);
